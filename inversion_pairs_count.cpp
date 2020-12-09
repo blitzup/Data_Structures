@@ -1,3 +1,7 @@
+// while dividing the array with odd length make sure that
+// the left side length is smaller than equal to the right side
+
+//check whether above statement true.
 #include <bits/stdc++.h>
 using namespace std;
 
