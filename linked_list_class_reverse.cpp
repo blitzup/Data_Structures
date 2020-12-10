@@ -27,12 +27,14 @@ public:
     void delete_back();
     void delete_front();
     void delete_index(int index);
+
     void reverse_gfg();
     void reverse();
+    void reverse_recurssive(Node *, Node *, Node *);
 
     void display();
 
-private:
+// private:
     Node *head;
 };
 
@@ -101,11 +103,25 @@ void LinkedList::reverse_gfg()
     while (temp != nullptr)
     {
         second = temp;
-        temp = temp -> next;
-        second -> next = first;
-        first =  second;
+        temp = temp->next;
+        second->next = first;
+        first = second;
     }
     head = second;
+}
+
+void LinkedList::reverse_recurssive(Node *temp, Node *first, Node *second)
+{
+    if (temp == nullptr)
+        head = second;
+    else
+    {
+        second = temp;
+        temp = temp->next;
+        second->next = first;
+        first = second;
+        reverse_recurssive(temp, first, second);
+    }
 }
 
 int main()
@@ -119,8 +135,8 @@ int main()
     linked_list->add_back(69);
     linked_list->display();
     cout << endl;
-
-    linked_list->reverse_gfg();
+    // cout << linked_list->head->data;
+    linked_list->reverse_recurssive(linked_list->head, nullptr, nullptr);
     linked_list->display();
 
     delete linked_list;
