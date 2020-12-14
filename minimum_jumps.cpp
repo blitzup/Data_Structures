@@ -42,6 +42,7 @@ int minJumps(int arr[], int n)
             index = n - 1;
         else
             index = arr[i] + i;
+            
         if (arr[index] != 0 || index == n - 1)
         {
             k = arr[i];
