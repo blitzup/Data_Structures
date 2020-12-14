@@ -4,29 +4,29 @@
 
 using namespace std;
 
-bool compare(vector<int> a, vector<int> b)
+struct element{
+    int start_time, end_time, index;
+};
+
+bool compare(struct element a, struct element b)
 {
-    return (a[1] <= b[1]);
+    return (a.end_time < b.end_time);
 }
 
 void maxMeetings(int start[], int end[], int n)
 {
 
-    vector<vector<int>> c(n);
+    struct element c[n];
     for (auto i = 0; i < n; i++)
-        c[i] = vector<int>{start[i], end[i], i};
-    sort(c.begin(), c.end(), compare);
+        c[i].start_time = start[i], c[i].end_time = end[i], c[i].index = i;
+    stable_sort(c, c+n, compare);
 
-    int end_completed = c[0][1];
-    cout << c[0][2]+1 << " ";
+    int end_completed = c[0].end_time;
+    cout << c[0].index+1 << " ";
     for(auto i=1; i<n; i++)
     {
-        if(c[i][0] > end_completed) end_completed = c[i][1], cout << c[i][2]+1 << " ";
+        if(c[i].start_time > end_completed) end_completed = c[i].end_time, cout << c[i].index+1 << " ";
     }
-
-    cout << endl;
-
-    // for(auto i=0; i<n; i++) cout << c[i][0] << " " << c[i][1] << " " << c[i][2] << endl;
 }
 
 
