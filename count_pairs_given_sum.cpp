@@ -18,21 +18,11 @@ public:
     {
 
         sort(arr, arr + n);
-
-        // for(auto i=0; i<n; i++) cout << arr[i] << " ";
-        // cout << endl;
         set<int> s;
         for (auto i = 0; i < n; i++)
             s.insert(arr[i]);
 
-        // set<int>::iterator it=s.begin();
-        // for (; it!=s.end(); it++)
-        //     cout << *it << " ";
-        // cout << endl;
-
         int nodup_size = s.size();
-        // cout << nodup_size << "*****";
-
         struct element count[nodup_size];
         int p = 0;
         for (auto i = 0; i < n; i++)
@@ -43,7 +33,6 @@ public:
                 count[p] = {arr[i], 1}, p++;
         }
 
-        // for(auto i=0; i<nodup_size; i++) cout << count[i].first << " " << count[i].second << endl;
         int i = 0, j = nodup_size - 1, pair_count = 0;
         double half = double(k) / 2;
         int flag=1;
