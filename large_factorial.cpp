@@ -3,29 +3,28 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
-#define MAX 500
+#define MAX 5000
 using namespace std;
 
 int multiply(int a[], int a_size, int m)
 {
     int mult = 0, carry = 0, length = 0;
-    for (auto i = 0; i < a_size; i++)
+    int i;
+    for (i = 0; i < a_size; i++)
     {
         mult = a[i] * m + carry;
         carry = mult / 10;
         a[i] = mult % 10;
         length++;
     }
-
-    if (carry != 0)
+    
+    
+    while(carry)
     {
-        string s = to_string(carry);
-        reverse(s.begin(), s.end());
-        int k = 0;
-        for (auto i = length; i < length + s.size(); i++)
-            a[i] = s[k] - '0';
-
-        length += s.size();
+        a[i] = carry % 10;
+        carry = carry / 10;
+        length++;
+        i++;
     }
 
     return length;
@@ -53,14 +52,8 @@ int main()
                 length = multiply(a, length, i);
             }
 
-            int flag = 1;
             for (auto i = length - 1; i >= 0; i--)
-            {
-                // if (a[i] == 0 && flag)
-                //     continue;
-                flag = 0;
                 cout << a[i];
-            }
         }
 
         cout << endl;
