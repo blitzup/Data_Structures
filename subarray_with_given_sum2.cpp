@@ -1,3 +1,6 @@
+//Solution can have many such subarray but this code finds one such subarray
+//Array contains only non negative number
+
 #include <bits/stdc++.h>
 using namespace std;
 
